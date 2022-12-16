@@ -1,0 +1,9 @@
+src/app/code/core/Mage/Adminhtml/Block/Backup/                              app/code/core/Mage/Adminhtml/Block/Backup/
+src/app/code/core/Mage/Adminhtml/Block/Backup.php                           app/code/core/Mage/Adminhtml/Block/Backup.php
+src/app/code/core/Mage/Adminhtml/controllers/System/BackupController.php    app/code/core/Mage/Adminhtml/controllers/System/BackupController.php
+src/app/code/core/Mage/Backup/                                              app/code/core/Mage/Backup/
+src/app/design/adminhtml/default/default/template/backup/                   app/design/adminhtml/default/default/template/backup/
+src/app/etc/modules/Mage_Backup.xml                                         app/etc/modules/Mage_Backup.xml
+src/app/locale/en_US/Mage_Backup.csv                                        app/locale/en_US/Mage_Backup.csv
+src/lib/Mage/Backup/                                                        lib/Mage/Backup/
+src/lib/Mage/Backup.php                                                     lib/Mage/Backup.php
