@@ -7,3 +7,4 @@ src/app/etc/modules/Mage_Backup.xml                                         app/
 src/app/locale/en_US/Mage_Backup.csv                                        app/locale/en_US/Mage_Backup.csv
 src/lib/Mage/Backup/                                                        lib/Mage/Backup/
 src/lib/Mage/Backup.php                                                     lib/Mage/Backup.php
+src/js/mage/adminhtml/backup.js                                             js/mage/adminhtml/backup.js
