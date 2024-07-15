@@ -56,11 +56,12 @@ class Mage_Adminhtml_Block_Backup_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('id');
         $this->getMassactionBlock()->setFormFieldName('ids');
 
-        $this->getMassactionBlock()->addItem('delete', [
-             'label' => Mage::helper('adminhtml')->__('Delete'),
-             'url'  => $this->getUrl('*/*/massDelete'),
-             'confirm' => Mage::helper('backup')->__('Are you sure you want to delete the selected backup(s)?')
-        ]);
+        // Disable delete
+        // $this->getMassactionBlock()->addItem('delete', array(
+        //      'label'=> Mage::helper('adminhtml')->__('Delete'),
+        //      'url'  => $this->getUrl('*/*/massDelete'),
+        //      'confirm' => Mage::helper('backup')->__('Are you sure you want to delete the selected backup(s)?')
+        // ));
 
         return $this;
     }
