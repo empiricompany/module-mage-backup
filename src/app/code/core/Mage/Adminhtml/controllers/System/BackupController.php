@@ -160,17 +160,23 @@ class Mage_Adminhtml_System_BackupController extends Mage_Adminhtml_Controller_A
      */
     public function downloadAction()
     {
-        /** @var Mage_Backup_Model_Backup $backup */
-        $_redirectTo =  Mage::getUrl('var/backups').DS.$backup->getFileName();
-        $_redirectTo = str_replace('index.php/', '', $_redirectTo);
-        // Direct url to backup (open var/backups only to allowed ips)
-        header('Location: '.$_redirectTo);
-        exit();
-        
+        /** @var Mage_Backup_Model_Backup $backup */        
         $backup = Mage::getModel('backup/backup')->loadByTimeAndType(
             $this->getRequest()->getParam('time'),
             $this->getRequest()->getParam('type')
         );
+
+        $_redirectTo =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'var'.DS.'backups'.DS.$backup->getFileName();
+        $_redirectTo = str_replace('index.php/', '', $_redirectTo);
+        /**
+         * Direct url to backup (open var/backups only to allowed ips)
+         * location ^~ /var/backups {
+         *      include includes/admin-ips;
+         *      deny all;
+         * }
+         */
+        header('Location: '.$_redirectTo);
+        exit();
 
         if (!$backup->getTime() || !$backup->exists()) {
             return $this->_redirect('*/*');
