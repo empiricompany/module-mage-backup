@@ -1,5 +1,5 @@
 {
-    "name": "openmage/module-mage-backup",
+    "name": "empiricompany/module-mage-backup",
     "description": "Mage_Backup classes for backward compatibility.",
     "license": "OSL-3.0",
     "type": "magento-module",
