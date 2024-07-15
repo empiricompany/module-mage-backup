@@ -38,7 +38,7 @@ class Mage_Adminhtml_Block_Backup extends Mage_Adminhtml_Block_Template
     protected function _prepareLayout()
     {
         parent::_prepareLayout();
-        $this->setChild(
+        /* $this->setChild(
             'createButton',
             $this->getLayout()->createBlock('adminhtml/widget_button')
                 ->setData([
@@ -64,7 +64,7 @@ class Mage_Adminhtml_Block_Backup extends Mage_Adminhtml_Block_Template
                     'onclick' => "return backup.backup('" . Mage_Backup_Helper_Data::TYPE_MEDIA . "')",
                     'class'  => ''
                 ])
-        );
+        ); */
         $this->setChild(
             'backupsGrid',
             $this->getLayout()->createBlock('adminhtml/backup_grid')
