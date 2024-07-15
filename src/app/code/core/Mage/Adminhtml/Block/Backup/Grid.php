@@ -76,60 +76,66 @@ class Mage_Adminhtml_Block_Backup_Grid extends Mage_Adminhtml_Block_Widget_Grid
     {
         $url7zip = Mage::helper('adminhtml')->__('The archive can be uncompressed with <a href="%s">%s</a> on Windows systems', 'http://www.7-zip.org/', '7-Zip');
 
-        $this->addColumn('time', [
-            'header'    => Mage::helper('backup')->__('Time'),
+        $this->addColumn('time', array(
+            'header'    => Mage::helper('backup')->__('Date'),
             'index'     => 'date_object',
             'type'      => 'datetime',
-        ]);
+            'width'     => 200
+        ));
 
-        $this->addColumn('display_name', [
+        $this->addColumn('display_name', array(
             'header'    => Mage::helper('backup')->__('Name'),
             'index'     => 'display_name',
             'filter'    => false,
             'sortable'  => true,
             'width'     => 350
-        ]);
+        ));
 
-        $this->addColumn('size', [
-            'header'    => Mage::helper('backup')->__('Size, Bytes'),
+        $this->addColumn('size', array(
+            'header'    => Mage::helper('backup')->__('Dimensione'),
             'index'     => 'size',
             'type'      => 'number',
             'sortable'  => true,
-            'filter'    => false
-        ]);
+            'filter'    => false,
+            'align'     => 'right',
+            'renderer'  => 'Mage_Adminhtml_Block_Backup_Grid_Renderer_Size'
+        ));
 
-        $this->addColumn('type', [
+        $this->addColumn('type', array(
             'header'    => Mage::helper('backup')->__('Type'),
             'type'      => 'options',
             'options'   => Mage::helper('backup')->getBackupTypes(),
             'index'     => 'type',
             'width'     => 300
-        ]);
+        ));
 
-        $this->addColumn('download', [
+        $this->addColumn('download', array(
             'header'    => Mage::helper('backup')->__('Download'),
-            'format'    => '<a href="' . $this->getUrl('*/*/download', ['time' => '$time', 'type' => '$type'])
-                . '">$extension</a> &nbsp; <small>(' . $url7zip . ')</small>',
+            'format'    => '<a href="' . $this->getUrl('*/*/download', array('time' => '$time', 'type' => '$type'))
+                . '" title="'.Mage::helper('backup')->__('Download').' $basename">$basename</a>',
             'index'     => 'type',
             'sortable'  => false,
             'filter'    => false
-        ]);
+        ));
 
-        if (Mage::helper('backup')->isRollbackAllowed()) {
-            $this->addColumn('action', [
-                    'header'   => Mage::helper('backup')->__('Action'),
-                    'type'     => 'action',
-                    'width'    => '80px',
-                    'filter'   => false,
-                    'actions'  => [[
-                        'url'     => '#',
-                        'caption' => Mage::helper('backup')->__('Rollback'),
-                        'onclick' => 'return backup.rollback(\'$type\', \'$time\');'
-                    ]],
-                    'index'    => 'type',
-                    'sortable' => false
-            ]);
-        }
+        // if (Mage::helper('backup')->isRollbackAllowed()){
+        //     $this->addColumn('action', array(
+        //             'header'   => Mage::helper('backup')->__('Action'),
+        //             'type'     => 'action',
+        //             'width'    => '80px',
+        //             'filter'   => false,
+        //             'sortable' => false,
+        //             'actions'  => array(array(
+        //                 'url'     => '#',
+        //                 'caption' => Mage::helper('backup')->__('Rollback'),
+        //                 'onclick' => 'return backup.rollback(\'$type\', \'$time\');'
+        //             )),
+        //             'index'    => 'type',
+        //             'sortable' => false
+        //     ));
+        // }
+
+        return $this;
 
         return $this;
     }
