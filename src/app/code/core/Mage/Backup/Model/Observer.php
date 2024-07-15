@@ -46,6 +46,9 @@ class Mage_Backup_Model_Observer
      */
     public function scheduledBackup()
     {
+        // Disable scheduled backup always
+        return $this;
+
         if (!Mage::getStoreConfigFlag(self::XML_PATH_BACKUP_ENABLED)) {
             return $this;
         }
